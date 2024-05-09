@@ -7,11 +7,13 @@
 </head>
 
 <body>
-    <div class="login">
+    <div class="login">        
         <div class="form">
+        <img src="img/logo.png">
             <form class="registro">
-                <input type="email" name="usuario">
-
+                <input type="email" name="usuario" placeholder="Seu email">
+                <input type="password" name="senha"placeholder="Sua senha">
+                <button>Login</button>
             </form>
         </div>
     </div>
