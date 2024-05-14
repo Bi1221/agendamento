@@ -16,4 +16,8 @@ try {
     
 
 }
+//variaveis globais
+$nome_sistema = 'Nome do Sistema';
+$email_sistema = 'biancabartole23@gmail.com';
+
 ?>
