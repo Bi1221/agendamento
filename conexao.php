@@ -19,5 +19,6 @@ try {
 //variaveis globais
 $nome_sistema = 'Nome do Sistema';
 $email_sistema = 'biancabartole23@gmail.com';
+$telefone_sistema = '(12) 99225-3453';
 
 ?>
