@@ -1,7 +1,7 @@
 <?php
 $pag = 'usuarios';
 ?>
-<a type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Usuário
+<a onclick="inserir()" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Usuário
 </a>
 
 <div class="bs-example widget-shadow" style="padding: 15px" id="listar"> 
@@ -16,7 +16,7 @@ $pag = 'usuarios';
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title" id="exampleModalLabel"><span id="titulo_inserir"></span>/h4>
+				<h4 class="modal-title" id="exampleModalLabel"><span id="titulo_inserir"></span></h4>
 				<button id="btn-fechar" type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -25px">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -33,18 +33,20 @@ $pag = 'usuarios';
 
 						<div class="col-md-6">							
 								<label>Email</label>
-								<input type="email" class="form-control" id="email" name="email" placeholder="Seu Nome" required>							
+								<input type="email" class="form-control" id="email" name="email" placeholder="Seu Email" required>							
 						</div>
+
 					</div>
 
 
 					<div class="row">
-						<div class="col-md-4">							
+						
+					<div class="col-md-6">							
 								<label>Telefone</label>
 								<input type="text" class="form-control" id="telefone" name="telefone" placeholder="Seu Telefone"  required>							
 						</div>
 
-                        <div class="col-md-4">							
+                        <div class="col-md-6">							
 								<label>Nível</label>
                                 <select class="form-control" name="nivel" id="nivel"> 
                                     <option>Administrador</option>
@@ -53,27 +55,26 @@ $pag = 'usuarios';
 						</div>
 
 						
-
-						
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">		
-						<label>Endereço</label>
-						<input type="text" class="form-control" id="endereco_perfil" name="endereco" placeholder="Seu Endereço" value="<?php echo $endereco_usuario ?>" >							
+					<div class="col-md-12">							
+								<label>Endereço</label>
+								<input type="text" class="form-control" id="endereco" name="endereco" placeholder="Seu endereço">							
+						</div>
 
-					</div>
+						</divclass>
 
-
+					
 
 					<div class="row">
 						<div class="col-md-8">							
 								<label>Foto</label>
-								<input type="file" class="form-control" id="foto_perfil" name="foto" value="<?php echo $foto_usuario ?>" onchange="carregarImgPerfil()">							
+								<input type="file" class="form-control" id="foto" name="foto"  onchange="carregarImg()">							
 						</div>
 
 						<div class="col-md-4">								
-							<img src="images/perfil/<?php echo $foto_usuario ?>"  width="80px" id="target-usu">								
+							<img src="images/perfil/sem-foto.jpg"  width="80px" id="target">								
 							
 						</div>
 
@@ -94,3 +95,23 @@ $pag = 'usuarios';
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function carregarImg() {
+    var target = document.getElementById('target');
+    var file = document.querySelector("#foto").files[0];
+    
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            target.src = reader.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+
+        } else {
+            target.src = "";
+        }
+    }
+</script>

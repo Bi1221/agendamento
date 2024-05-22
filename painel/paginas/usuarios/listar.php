@@ -2,7 +2,7 @@
 $tabela = 'usuarios';
 require_once("../../../conexao.php");
 
-$query = $pdo->query("SELECT * from usuarios");
+$query = $pdo->query("SELECT * from usuarios order by id desc");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $linhas = @count($res);
 if ($linhas > 0) {
@@ -47,6 +47,9 @@ for ($i = 0; $i < $linhas; $i++) {
         $acao = 'Sim';
         $classe_ativo = '#c4c4c4';
     }
+    if($nivel == 'Administrador') {
+        $senha = '*****';
+    }
 
 
     echo <<<HTML
@@ -55,7 +58,7 @@ for ($i = 0; $i < $linhas; $i++) {
 <td class="esc">{$telefone}</td>    
 <td class="esc">{$email}</td>    
 <td class="esc">{$nivel}</td>
-<td>Que tal começar um atendimento?
+<td>
 
 
     <big><a href="#" onclick="editar('{$id}','{$nome}','{$email}','{$telefone}','{$endereco}','{$nivel}')" tttle="Editar Dados"><i class="fa fa-edit text-primary"></i></a></big>
@@ -88,5 +91,19 @@ HTML;
 
 echo <<<HTML
 </tbody>
+<small><div align="center" id="mensagem-excluir"></div></small>
 </table>
 HTML;
+?>
+
+<script type="test/javascript">
+    $(document).ready( function (){
+    $('#tabela').DataTable({
+        "language" : {
+        "url" : '//cdn.datatables.net/plug-ins/1.13.2/i18n/pt-BR.json'
+        },
+        "ordering": false,
+        "listaSave": true
+    });
+}  );
+</script>

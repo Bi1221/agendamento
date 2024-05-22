@@ -30,7 +30,7 @@ if($linhas > 0){
 	<title>Nome Sistema</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="shortcut icon" href="" type="image/x-icon">
+	<link rel="shortcut icon" href="../img/icone.png" type="image/x-icon">
 
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
@@ -291,7 +291,8 @@ if($linhas > 0){
 		};
 
 
-		function disableOther( button ) {
+		function disableOthe
+		( button ) {
 			if( button !== 'showLeftPush' ) {
 				classie.toggle( showLeftPush, 'disabled' );
 			}
@@ -320,7 +321,7 @@ if($linhas > 0){
 
 
 	<!-- Mascaras JS -->
-<script type="text/javascript" src="../../js/mascaras.js"></script>
+<script type="text/javascript" src="js/mascaras.js"></script>
 
 <!-- Ajax para funcionar Mascaras JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script> 
@@ -361,12 +362,7 @@ if($linhas > 0){
 					</div>
 
 
-					<div class="row">
-						<div class="col-md-4">							
-								<label>Telefone</label>
-								<input type="text" class="form-control" id="telefone_perfil" name="telefone" placeholder="Seu Telefone" value="<?php echo $telefone_usuario ?>" required>							
-						</div>
-
+					
 						<div class="col-md-4">							
 								<label>Senha</label>
 								<input type="password" class="form-control" id="senha_perfil" name="senha" placeholder="Senha" value="<?php echo $senha_usuario ?>" required>							
