@@ -15,6 +15,7 @@ if ($linhas > 0) {
     <th class="esc">Telefone</th>	
     <th class="esc">Email</th>	
     <th class="esc">Nível</th>	
+    <th class="esc">Foto</th>	
     <th>Ações</th>
     </tr> 
     </thead> 
@@ -58,6 +59,7 @@ for ($i = 0; $i < $linhas; $i++) {
 <td class="esc">{$telefone}</td>    
 <td class="esc">{$email}</td>    
 <td class="esc">{$nivel}</td>
+<td class="esc"><img src="images/perfil/{$foto}" width ="25px"></td>
 <td>
 
 
@@ -106,4 +108,46 @@ HTML;
         "listaSave": true
     });
 }  );
+</script>
+
+<script type="text/javascript">
+    function editar(id, nome, email, telefone, endereco, nivel){
+        $('#mensagem').text('');
+        $('#titulo_inserir').text('Editar Registro');
+
+        $('#id').val(id);
+        $('#nome').val(nome);
+        $('#email').val(email);
+        $('#telefone').val(telefone);
+        $('#endereco').val(endereco);
+        $('#nivel').val(nivel).change();
+
+        $('#modalForm').modal('show');
+
+    }
+
+    function mostrar(nome, email, telefone, endereco, ativo, data, senha, nivel,foto){
+  
+        
+        $('#titulo_dados').text(nome);
+        $('#email_dados').text(email);
+        $('#telefone_dados').text(telefone);
+        $('#endereco_dados').text(endereco);
+        $('#ativo_dados').text(ativo_dados);
+        $('#data_dados').text(data);
+        $('#senha_dados').text(senha);
+        $('#nivel_dados').text(nivel);
+        $('#foto_dados').text(foto);
+       
+
+        $('#modalDados').modal('show');
+
+    }
+    function limparCampos(){
+        $('#id').val('');
+        $('#nome').val('');
+        $('#email').val('');
+        $('#telefone').val('');
+        $('#endereco').val('');
+    }
 </script>

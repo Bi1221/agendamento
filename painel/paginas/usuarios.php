@@ -8,10 +8,9 @@ $pag = 'usuarios';
 
 </div>
 
-<script type="text/javascript">var pag = "<?=$pag?>"</script>
-<script src="js/ajax.js"></script>
 
 
+<!-- Modal Perfil-->
 <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -63,30 +62,16 @@ $pag = 'usuarios';
 								<input type="text" class="form-control" id="endereco" name="endereco" placeholder="Seu endereço">							
 						</div>
 
-						</divclass>
+						</div>
 
 					
 
-					<div class="row">
-						<div class="col-md-8">							
-								<label>Foto</label>
-								<input type="file" class="form-control" id="foto" name="foto"  onchange="carregarImg()">							
-						</div>
+					
+					<input type="hidden" class="form-control" id="id" name="id">
 
-						<div class="col-md-4">								
-							<img src="images/perfil/sem-foto.jpg"  width="80px" id="target">								
-							
-						</div>
-
-						
-					</div>
-
-
-					<input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
-				
 
 				<br>
-				<small><div id="msg-perfil" align="center"></div></small>
+				<small><div id="mensagem" align="center"></div></small>
 			</div>
 			<div class="modal-footer">       
 				<button type="submit" class="btn btn-primary">Salvar</button>
@@ -96,22 +81,61 @@ $pag = 'usuarios';
 	</div>
 </div>
 
-<script type="text/javascript">
-	function carregarImg() {
-    var target = document.getElementById('target');
-    var file = document.querySelector("#foto").files[0];
-    
-        var reader = new FileReader();
 
-        reader.onloadend = function () {
-            target.src = reader.result;
-        };
 
-        if (file) {
-            reader.readAsDataURL(file);
+<!-- Modal dados-->
+<div class="modal fade" id="modalDados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="exampleModalLabel"><span id="titulo_dados"></span></h4>
+				<button id="btn-fechar-dados" type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -25px">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			
+			<div class="modal-body">
+			<div class="row" style="margin-top: 0px">
+					<div class="col-md-6" style="margin-bottom: 5px">
+						<span><b>Telefone: </b></span><span id="telefone_dados"></span>
+					</div>
+				
 
-        } else {
-            target.src = "";
-        }
-    }
-</script>
+					<div class="col-md-8" style="margin-bottom: 5px">
+						<span><b>Email: </b></span><span id="email_dados"></span>
+					</div>
+
+					
+
+					<div class="col-md-4" style="margin-bottom: 5px">
+						<span><b>Senha: </b></span><span id="senha_dados"></span>
+					</div>
+
+					<div class="col-md-6" style="margin-bottom: 5px">
+						<span><b>Nível: </b></span><span id="nivel_dados"></span>
+					</div>
+
+					<div class="col-md-6" style="margin-bottom: 5px">
+						<span><b>Ativo: </b></span><span id="ativo_dados"></span>
+					</div>
+
+					<div class="col-md-6" style="margin-bottom: 5px">
+						<span><b>Data Cadastro: </b></span><span id="data_cad_dados"></span>
+					</div>
+
+					<div class="col-md-12" style="margin-bottom: 5px">
+						<span><b>Endereço: </b></span><span id="endereco_dados"></span>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">var pag = "<?=$pag?>"</script>
+<script src="js/ajax.js"></script>
+
+

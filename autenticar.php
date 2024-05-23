@@ -5,12 +5,6 @@ $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 $senha_crip = md5($senha);
 
-$query = $pdo->prepare("SELECT * from usuarios where email = :email and senha_crip = :senha");
-$query->bindValue(":email", "$usuario");
-$query->bindValue(":senha", "$senha_crip");
-$query->execute();
-$res = $query->fetchAll(PDO::FETCH_ASSOC);
-$linhas = @count($res);
 
 if($linhas > 0){
 
