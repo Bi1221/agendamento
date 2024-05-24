@@ -133,11 +133,11 @@ HTML;
         $('#email_dados').text(email);
         $('#telefone_dados').text(telefone);
         $('#endereco_dados').text(endereco);
-        $('#ativo_dados').text(ativo_dados);
+        $('#ativo_dados').text(ativo);
         $('#data_dados').text(data);
         $('#senha_dados').text(senha);
         $('#nivel_dados').text(nivel);
-        $('#foto_dados').text(foto);
+        $('#foto_dados').attr("src","images/perfil/" + foto);
        
 
         $('#modalDados').modal('show');

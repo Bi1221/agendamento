@@ -454,7 +454,8 @@ if ($linhas > 0) {
 					<div class="row">
 						<div class="col-md-3">
 							<label>Nome do Projeto</label>
-							<input type="text" class="form-control" id="nome_sistema" name="nome_sistema" placeholder="Delivery Interativo" value="<?php echo @$nome_sistema ?>" required>
+							<input type="text" class="form-control" id="nome_sistema" name="nome_sistema" placeholder="Delivery Inter
+							" value="<?php echo @$nome_sistema ?>" required>
 						</div>
 
 						<div class="col-md-3">
