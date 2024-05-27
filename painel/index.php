@@ -452,28 +452,24 @@ if ($linhas > 0) {
 
 
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<label>Nome do Projeto</label>
 							<input type="text" class="form-control" id="nome_sistema" name="nome_sistema" placeholder="Delivery Inter
 							" value="<?php echo @$nome_sistema ?>" required>
 						</div>
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<label>Email Sistema</label>
 							<input type="email" class="form-control" id="email_sistema" name="email_sistema" placeholder="Email do Sistema" value="<?php echo @$email_sistema ?>">
 						</div>
 
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<label>Telefone Sistema</label>
 							<input type="text" class="form-control" id="telefone_sistema" name="telefone_sistema" placeholder="Telefone do Sistema" value="<?php echo @$telefone_sistema ?>" required>
 						</div>
 
-						<div class="col-md-3">
-							<label>Telefone Fixo</label>
-							<input type="text" class="form-control" id="telefone_fixo" name="telefone_fixo" placeholder="Telefone Fixo" value="<?php echo @$telefone_fixo ?>">
-						</div>
-					</div>
+						
 
 
 					<div class="row">
@@ -481,24 +477,6 @@ if ($linhas > 0) {
 							<label>Endereço <small>(Rua Número Bairro e Cidade)</small></label>
 							<input type="text" class="form-control" id="endereco_sistema" name="endereco_sistema" placeholder="Rua X..." value="<?php echo @$endereco_sistema ?>">
 						</div>
-
-						<div class="col-md-6">
-							<label>Instagram</label>
-							<input type="text" class="form-control" id="instagram_sistema" name="instagram_sistema" placeholder="Link do Instagram" value="<?php echo @$instagram_sistema ?>">
-						</div>
-					</div>
-
-
-
-					<div class="row">
-						<div class="col-md-3">
-							<label>Tipo Relatório</label>
-							<select class="form-control" name="tipo_rel">
-								<option value="PDF" <?php if (@$tipo_rel == 'PDF') { ?> selected <?php } ?>>PDF</option>
-								<option value="HTML" <?php if (@$tipo_rel == 'HTML') { ?> selected <?php } ?>>HTML</option>
-							</select>
-						</div>
-
 
 
 					</div>
@@ -517,7 +495,7 @@ if ($linhas > 0) {
 						</div>
 						<div class="col-md-2">
 							<div id="divImg">
-								<img src="../../img/<?php echo $logo_sistema ?>" width="80px" id="target-logo">
+								<img src="../img/<?php echo $logo_sistema ?>" width="80px" id="target-logo">
 							</div>
 						</div>
 
@@ -530,7 +508,7 @@ if ($linhas > 0) {
 						</div>
 						<div class="col-md-2">
 							<div id="divImg">
-								<img src="../../img/<?php echo $favicon_sistema ?>" width="50px" id="target-icone">
+								<img src="../img/<?php echo $icone_sistema ?>" width="50px" id="target-icone">
 							</div>
 						</div>
 
@@ -549,7 +527,7 @@ if ($linhas > 0) {
 						</div>
 						<div class="col-md-2">
 							<div id="divImg">
-								<img src="../../img/<?php echo @$logo_rel ?>" width="80px" id="target-logo-rel">
+								<img src="../img/<?php echo $logo_rel_sistema ?>" width="80px" id="target-logo-rel">
 							</div>
 						</div>
 
