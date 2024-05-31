@@ -118,8 +118,8 @@ if ($linhas > 0) {
 		});
 	</script>
 	<!-- //pie-chart --><!-- index page sales reviews visitors pie chart -->
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.13.2/datatables.min.css">
-	<script src="https://cdn.datatables.net/v/dt/dt-1.13.2/datatables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css">
+	<script src="DataTables/datatables.min.js"></script>
 
 
 </head>
