@@ -151,8 +151,13 @@ HTML;
         $('#email').val('');
         $('#telefone').val('');
         $('#endereco').val('');
+        $('#ids').val('');
+        $('#btn-deletar').hide();
     }
     function selecionar(id){
+
+        var ids = $('#ids').val();
+
         if($('#seletor-'+id).is(":checked") == true){
 			var novo_id = ids + id + '-';
 			$('#ids').val(novo_id);
@@ -161,5 +166,25 @@ HTML;
 			$('#ids').val(retirar);
 		}
 
+        var idf_final = $('#ids').val();
+        if(idf_final == ""){
+            $('#btn-deletar').hide();
+        }else{
+            $('#btn-deletar').show();
+        }
+
+        }
+
+    function deletarSel(){
+        var ids = $('#ids').val();
+        var id = ids.split("-");
+      
+        for(i=0; i<id.length-1; i++){
+            excluir(id[i]);
+
+
+        }
+
+        limparCampos();
     }
 </script>
