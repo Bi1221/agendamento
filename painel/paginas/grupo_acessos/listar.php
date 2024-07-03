@@ -1,21 +1,19 @@
 <?php
-$tabela = 'usuarios';
+$tabela = 'grupo_acessos';
 require_once("../../../conexao.php");
 
 $query = $pdo->query("SELECT * from usuarios order by id desc");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $linhas = @count($res);
 if ($linhas > 0) {
+
     echo <<<HTML
 <small>
     <table class="table table-hover" id="tabela">
     <thead> 
     <tr> 
     <th>Nome</th>	
-    <th class="esc">Telefone</th>	
-    <th class="esc">Email</th>	
-    <th class="esc">Nível</th>	
-    <th class="esc">Foto</th>	
+    <th>Acessos</th>		
     <th>Ações</th>
     </tr> 
     </thead> 
@@ -26,46 +24,25 @@ HTML;
 for ($i = 0; $i < $linhas; $i++) {
     $id = $res[$i]['id'];
     $nome = $res[$i]['nome'];
-    $telefone = $res[$i]['telefone'];
-    $email = $res[$i]['email'];
-    $senha = $res[$i]['senha'];
-    $foto = $res[$i]['foto'];
-    $nivel = $res[$i]['nivel'];
-    $endereco = $res[$i]['endereco'];
-    $ativo = $res[$i]['ativo'];
-    $data = $res[$i]['data'];
+    
+$query2 = $pdo->query("SELECT * from acessos where grupo = '$id' ");
+$res2 = $query2->fetchAll(PDO::FETCH_ASSOC);
+$total_acessos = @count($res2);
+   
 
-    $dataF = implode('/', array_reverse(explode('-', $data)));
+    
 
-    if ($ativo == 'Sim') {
-        $icone = 'fa-check-square';
-        $titulo_link = 'Desativar Usuário';
-        $acao = 'Não';
-        $classe_ativo = '';
-    } else {
-        $icone = 'fa-square-o';
-        $titulo_link = 'Ativar Usuário';
-        $acao = 'Sim';
-        $classe_ativo = '#c4c4c4';
-    }
-    if($nivel == 'Administrador') {
-        $senha = '*****';
-    }
-
-
-    echo <<<HTML
-<tr style="color:{$classe_ativo}">
+echo <<<HTML
+<tr>
 <td>
     <input type="checkbox" id="seletor-{$id}" class="form-check-input" onchange="selecionar('{$id}')">
     {$nome}</td>    
-<td class="esc">{$telefone}</td>    
-<td class="esc">{$email}</td>    
-<td class="esc">{$nivel}</td>
-<td class="esc"><img src="images/perfil/{$foto}" width ="25px"></td>
+<td class="esc">{$total_acessos}</td>    
+
 <td>
 
 
-    <big><a href="#" onclick="editar('{$id}','{$nome}','{$email}','{$telefone}','{$endereco}','{$nivel}')" tttle="Editar Dados"><i class="fa fa-edit text-primary"></i></a></big>
+    <big><a href="#" onclick="editar('{$id}','{$nome}')" tttle="Editar Dados"><i class="fa fa-edit text-primary"></i></a></big>
 
     <li class="dropdown head-dpdn2" style="display: inline-block;">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><big><i class="fa fa-trash-o text-danger"></i></big></a>
@@ -78,20 +55,12 @@ for ($i = 0; $i < $linhas; $i++) {
 		</li>										
 		</ul>
 </li>
-<big><a href="#" onclick="mostrar('{$nome}','{$email}','{$telefone}','{$endereco}','{$ativo}','{$dataF}', '{$senha}', '{$nivel}', '{$foto}')" title="Mostrar Dados"><i class="fa fa-info-circle text-primary"></i></a></big>
-
-
-<big><a href="#" onclick="ativar('{$id}', '{$acao}')" title="{$titulo_link}"><i class="fa {$icone} text-success"></i></a></big>
-
-
-</ul>
 
 </td>
 </tr>
 
 HTML;
 }
-
 
 echo <<<HTML
 </tbody>
@@ -101,6 +70,7 @@ HTML;
 }else{
     echo '<small>Nenhum Registro Encontrado!</small>';
 }
+
 ?>
 
 <script type="test/javascript">
@@ -116,44 +86,22 @@ HTML;
 </script>
 
 <script type="text/javascript">
-    function editar(id, nome, email, telefone, endereco, nivel){
+    function editar(id, nome){
         $('#mensagem').text('');
         $('#titulo_inserir').text('Editar Registro');
 
         $('#id').val(id);
         $('#nome').val(nome);
-        $('#email').val(email);
-        $('#telefone').val(telefone);
-        $('#endereco').val(endereco);
-        $('#nivel').val(nivel).change();
-
+      
         $('#modalForm').modal('show');
 
     }
 
-    function mostrar(nome, email, telefone, endereco, ativo, data, senha, nivel,foto){
-  
-        
-        $('#titulo_dados').text(nome);
-        $('#email_dados').text(email);
-        $('#telefone_dados').text(telefone);
-        $('#endereco_dados').text(endereco);
-        $('#ativo_dados').text(ativo);
-        $('#data_dados').text(data);
-        $('#senha_dados').text(senha);
-        $('#nivel_dados').text(nivel);
-        $('#foto_dados').attr("src","images/perfil/" + foto);
-       
-
-        $('#modalDados').modal('show');
-
-    }
+    
     function limparCampos(){
         $('#id').val('');
         $('#nome').val('');
-        $('#email').val('');
-        $('#telefone').val('');
-        $('#endereco').val('');
+    
         $('#ids').val('');
         $('#btn-deletar').hide();
     }
