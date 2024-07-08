@@ -156,6 +156,34 @@ $pag = 'usuarios';
 </div>
 
 
+
+<!-- Modal Permissoes-->
+<div class="modal fade" id="modalPermissoes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="exampleModalLabel"><span id="nome_permissoes"></span>
+				<span style="position:absolute; right:35px">
+						<input class="form-check-input" type="checkbox" id="input-todos" onchange="marcarTodos()">
+						<label class="" >Marcar Todos</label>
+					</span>
+			</h4>
+				
+			</div>
+
+			<div class="modal-body">
+				<div class="row" id="listar_permissoes">
+					<small><div id="mensagem_permissao" align="center" class="mt-3"></div></small>
+
+				</div>
+				<br>
+				<input type="hidden" name="id" id="id_permissoes">
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <script type="text/javascript">
 	var pag = "<?= $pag ?>"
 </script>

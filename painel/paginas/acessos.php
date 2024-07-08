@@ -1,7 +1,7 @@
 <?php
-$pag = 'grupo_acessos';
+$pag = 'acessos';
 ?>
-<a onclick="inserir()" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Grupo
+<a onclick="inserir()" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Acesso
 </a>
 
 
@@ -27,7 +27,7 @@ $pag = 'grupo_acessos';
 
 <!-- Modal Perfil-->
 <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title" id="exampleModalLabel"><span id="titulo_inserir"></span></h4>
@@ -39,16 +39,42 @@ $pag = 'grupo_acessos';
 				<div class="modal-body">
 
 
-					<div class="row">
-						<div class="col-md-6">
-							<label>Nome</label>
-							<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do grupo" required>
+				<div class="row">
+						<div class="col-md-3">						
+								<label>Nome</label>
+								<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Menu" required>	
 						</div>
 
-						<div class="col-md-6" style="margin-top: 22px">
-							<button type="submit" class="btn btn-primary">Salvar</button>
+						<div class="col-md-3">						
+								<label>Chave</label>
+								<input type="text" class="form-control" id="chave" name="chave" placeholder="Chave" required>	
 						</div>
 
+						<div class="col-md-2">						
+								<label>Grupo</label>
+								<select class="form-control" name="grupo" id="grupo">
+								<option value="0">Sem Grupo</option>
+								<?php 
+									$query = $pdo->query("SELECT * from grupo_acessos order by id asc");
+									$res = $query->fetchAll(PDO::FETCH_ASSOC);
+									$linhas = @count($res);
+									if($linhas > 0){
+									for($i=0; $i<$linhas; $i++){
+								 ?>
+								  <option value="<?php echo $res[$i]['id'] ?>"><?php echo $res[$i]['nome'] ?></option>
+
+								<?php } } ?>
+									
+								</select>	
+						</div>
+
+						
+
+						<div class="col-md-1" style="margin-top: 22px">							
+								<button type="submit" class="btn btn-primary">Salvar</button>					
+						</div>
+
+						
 					</div>
 
 

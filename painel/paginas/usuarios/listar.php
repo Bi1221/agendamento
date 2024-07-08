@@ -48,8 +48,11 @@ for ($i = 0; $i < $linhas; $i++) {
         $acao = 'Sim';
         $classe_ativo = '#c4c4c4';
     }
+    $mostrar_adm = '';
     if($nivel == 'Administrador') {
         $senha = '*****';
+        $mostrar_adm = 'ocultar';
+
     }
 
 
@@ -83,6 +86,8 @@ for ($i = 0; $i < $linhas; $i++) {
 
 <big><a href="#" onclick="ativar('{$id}', '{$acao}')" title="{$titulo_link}"><i class="fa {$icone} text-success"></i></a></big>
 
+
+<big><a class="{$mostrar_adm}" href="#" onclick="permissoes('{$id}', '{$nome}')" title="Dar Permissões"><i class="fa fa-lock text-primary"></i></a></big>
 
 </ul>
 
@@ -190,4 +195,31 @@ HTML;
 
         limparCampos();
     }
+
+    function permissoes(id, nome){
+  
+        
+  $('#id_permissoes').val(id);
+  $('#nome_permissoes').text(nome);
+
+ 
+
+  $('#modalPermissoes').modal('show');
+  listarPermissoes(id);
+
+}
+
+function listarPermissoes(id){
+    $.ajax({
+        url: 'paginas/' + pag + "/listar_permissoes.php",
+        method: 'POST',
+        data: {id},
+        dataType: "html",
+
+        success: function (result) {
+            $("#listar_permissoes").html(result);
+            $('#mensagem-permissao').text('');
+        }
+    });
+}
 </script>
