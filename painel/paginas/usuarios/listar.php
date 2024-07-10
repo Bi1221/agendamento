@@ -218,7 +218,7 @@ function listarPermissoes(id){
 
         success: function (result) {
             $("#listar_permissoes").html(result);
-            $('#mensagem-permissao').text('');
+            $('#mensagem_permissao').text('');
         }
     });
 }
