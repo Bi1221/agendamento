@@ -1,20 +1,21 @@
-<?php
+<?php 
 $tabela = 'usuarios';
 require_once("../conexao.php");
 
-$nome = $_POST["nome"];
-$email = $_POST["email"];
-$telefone = $_POST["telefone"];
-$conf_senha = $_POST["conf_senha"];
-$endereco = $_POST["endereco"];
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$telefone = $_POST['telefone'];
+$conf_senha = $_POST['conf_senha'];
+$endereco = $_POST['endereco'];
 $senha = $_POST['senha'];
-$senha_crip = md5($senha);
+$senha_crip = sha1($senha);
 $id = $_POST['id_usuario'];
 
 if($conf_senha != $senha){
 	echo 'As senhas não se coincidem';
 	exit();
 }
+
 //validacao email
 $query = $pdo->query("SELECT * from $tabela where email = '$email'");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -32,6 +33,8 @@ if(@count($res) > 0 and $id != $id_reg){
 	echo 'Telefone já Cadastrado!';
 	exit();
 }
+
+
 
 
 //validar troca da foto
@@ -73,15 +76,15 @@ if(@$_FILES['foto']['name'] != ""){
 }
 
 
-$query = $pdo->prepare("UPDATE $tabela SET nome = :nome, email = :email, senha = :senha, senha_crip = '$senha_crip', telefone = :telefone, endereco = :endereco, foto = '$foto' where id = '$id'");
 
+$query = $pdo->prepare("UPDATE $tabela SET nome = :nome, email = :email, telefone = :telefone, senha = :senha, senha_crip = '$senha_crip', endereco = :endereco, foto = '$foto' where id = '$id'");
 
 $query->bindValue(":nome", "$nome");
 $query->bindValue(":email", "$email");
 $query->bindValue(":telefone", "$telefone");
 $query->bindValue(":endereco", "$endereco");
-$query->bindValue(":senha", "$senha");
+$query->bindValue(":senha", "");
 $query->execute();
 
 echo 'Editado com Sucesso';
-?>
+ ?>

@@ -1,33 +1,41 @@
-<?php
+<?php 
 $pag = 'acessos';
-?>
-<a onclick="inserir()" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Acesso
-</a>
+
+if(@$acessos == 'ocultar'){
+	echo "<script>window.location='../index.php'</script>";
+    exit();
+}	
+ ?>
+
+<div class="main-page margin-mobile">
+
+<a onclick="inserir()" type="button" class="btn btn-primary"><span class="fa fa-plus"></span> Acesso</a>
 
 
 
-<li class="dropdown head-dpdn2" style="display: inline-block;">
+<li class="dropdown head-dpdn2" style="display: inline-block;">		
+		<a href="#" data-toggle="dropdown"  class="btn btn-danger dropdown-toggle" id="btn-deletar" style="display:none"><span class="fa fa-trash-o"></span> Deletar</a>
 
-	<a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle" id="btn-deletar" style="display:none"><span class="fa fa-trash-o"></span>Deletar
-	</a>
-
-	<ul class="dropdown-menu">
+		<ul class="dropdown-menu">
 		<li>
-			<div class="notification_desc2">
-				<p>Excluir Selecionados? <a href="#" onclick="deletarSel('')"><span class="text-danger">Sim</span></a></p>
-			</div>
-		</li>
-	</ul>
+		<div class="notification_desc2">
+		<p>Excluir Selecionados? <a href="#" onclick="deletarSel()"><span class="text-danger">Sim</span></a></p>
+		</div>
+		</li>										
+		</ul>
 </li>
-<div class="bs-example widget-shadow" style="padding: 15px" id="listar">
+
+<div class="bs-example widget-shadow " style="padding:15px" id="listar">
+
+</div>
 
 </div>
 
 <input type="hidden" id="ids">
 
-<!-- Modal Perfil-->
+<!-- Modal Perfil -->
 <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog modal-lg" style="width:80%">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title" id="exampleModalLabel"><span id="titulo_inserir"></span></h4>
@@ -36,10 +44,10 @@ $pag = 'acessos';
 				</button>
 			</div>
 			<form id="form">
-				<div class="modal-body">
+			<div class="modal-body">
+				
 
-
-				<div class="row">
+					<div class="row">
 						<div class="col-md-3">						
 								<label>Nome</label>
 								<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Menu" required>	
@@ -68,7 +76,13 @@ $pag = 'acessos';
 								</select>	
 						</div>
 
-						
+						<div class="col-md-2">	
+							<label>Página</label>
+								<select class="form-control" name="pagina" id="pagina">
+								<option value="Sim">Sim</option>
+								<option value="Não">Não</option>
+								</select>	
+						</div>
 
 						<div class="col-md-1" style="margin-top: 22px">							
 								<button type="submit" class="btn btn-primary">Salvar</button>					
@@ -77,22 +91,13 @@ $pag = 'acessos';
 						
 					</div>
 
+			
+					<input type="hidden" class="form-control" id="id" name="id">					
 
-					<div class="row">
-
-					
-
-					<input type="hidden" class="form-control" id="id" name="id">
-
-
-					<br>
-					<small>
-						<div id="mensagem" align="center"></div>
-					</small>
-				</div>
-				<div class="modal-footer">
-					
-				</div>
+				<br>
+				<small><div id="mensagem" align="center"></div></small>
+			</div>
+			
 			</form>
 		</div>
 	</div>
@@ -102,8 +107,8 @@ $pag = 'acessos';
 
 
 
-
-<script type="text/javascript">
-	var pag = "<?= $pag ?>"
-</script>
+<script type="text/javascript">var pag = "<?=$pag?>"</script>
 <script src="js/ajax.js"></script>
+
+
+

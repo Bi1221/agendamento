@@ -2,7 +2,7 @@
 $tabela = 'usuarios_permissoes';
 require_once("../../../conexao.php");
 
-$id_usuario = $_POST['id'];
+$id_usuario = @$_POST['id'];
 
 $checked = '';
 $query = $pdo->query("SELECT * FROM acessos where grupo = 0 order by id asc");
@@ -97,5 +97,4 @@ if($total_reg3 > 0){
 }
 
 }
-
 ?>

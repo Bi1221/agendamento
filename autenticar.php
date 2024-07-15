@@ -3,7 +3,7 @@
 require_once("conexao.php");
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
-$senha_crip = md5($senha);
+$senha_crip = sha1($senha);
 
 $query = $pdo->prepare("SELECT * from usuarios where email = :email and senha_crip = :senha");
 $query->bindValue(":email", "$usuario");
@@ -14,7 +14,7 @@ $linhas = @count($res);
 
 if($linhas > 0){
 
-	if($res[0]['ativo'] != "Sim"){
+	if($res[0]['ativo'] != 'Sim'){
 		echo '<script>window.alert("Seu acesso foi desativado!!")</script>'; 
 		echo '<script>window.location="index.php"</script>';  
 	}
@@ -24,10 +24,10 @@ if($linhas > 0){
 	$_SESSION['nivel'] = $res[0]['nivel'];
 
 	echo '<script>window.location="painel"</script>';
-	}else{
-		echo '<script>window.alert("Dados Incorretos!!")</script>'; 
-		echo '<script>window.location="index.php"</script>';  
+}else{
+	echo '<script>window.alert("Dados Incorretos!!")</script>'; 
+	echo '<script>window.location="index.php"</script>';  
 }
 
 
-?>
+ ?>
