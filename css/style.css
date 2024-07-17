@@ -53,3 +53,7 @@ body{
     margin-bottom: 15px;
     width: 150px;
 }
+
+.margin-mobile{
+  margin-top: -70px;
+}

@@ -46,7 +46,7 @@ $ativo_sistema = $res[0]['ativo'];
 if($ativo_sistema != 'Sim' and $ativo_sistema != ''){ ?>
 	<style type="text/css">
 		@media only screen and (max-width: 700px) {
-  .imgsistema_mobile{
+ .imgsistema_mobile{
     width:300px;
   }
     

@@ -4,7 +4,7 @@ $query = $pdo->query("SELECT * from usuarios");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $linhas = @count($res);
 $senha = '123';
-$senha_crip = md5($senha);
+$senha_crip = sha1($senha);
 if ($linhas == 0) {
     $pdo->query("INSERT INTO usuarios SET nome = '$nome_sistema', email = '$email_sistema',senha = '$senha', senha_crip = '$senha_crip', nivel ='Administrador', ativo ='Sim', foto = 'sem-foto.jpg', telefone = '$telefone_sistema', data =curDate()");
 }
@@ -29,6 +29,7 @@ if ($linhas == 0) {
                 <input type="password" name="senha"placeholder="Sua senha" required>
                 <button>Login</button>
             </form>
+            <p class="recuperar"><a title="Clique para recupearar a senha" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Recuperar Senha</a></p>
         </div>
     </div>
 </body>
