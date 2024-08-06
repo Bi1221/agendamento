@@ -57,3 +57,10 @@ body{
 .margin-mobile{
   margin-top: -70px;
 }
+
+.recuperar a{
+  margin-top:25px;
+  font-size:13px;
+  text-align:center;
+  text-decoration: none;
+}
