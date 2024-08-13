@@ -108,3 +108,5 @@ $_SESSION['temp_reset_token'] = $_REQUEST['token'];
 
 	});
 </script>
+
+22
